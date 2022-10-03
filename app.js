@@ -77,10 +77,10 @@ app.put("/career/delete/:id",(req,res) => {
                     break;
                 }
               }
+            res.send("guardado");
         }else{
             res.sendStatus(404);
         }
-        res.send("guardado");
     }).catch((err) => {
         throw err;
     })
