@@ -27,6 +27,6 @@ mongoose.model("career",{
         type: String,
     },
     pensum: [{
-        type: Number
+        type: String
     }]
 })
