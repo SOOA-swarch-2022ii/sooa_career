@@ -66,12 +66,12 @@ app.delete("/career/:id",(req,res) => {
 
 })
 
-app.put("/career/delete/:id",(req,res) => {
+app.put("/career/delete/:id/:subject",(req,res) => {
     Career.findById(req.params.id).then((career)=>{
         if(career){
             tam = career.pensum.length;
               for (let i = 0; i < tam; i++) {
-                if(career.pensum[i]==req.body.subject){
+                if(career.pensum[i]==req.params.subject){
                     career.pensum.splice(i,1);
                     career.save();
                     break;
@@ -87,12 +87,12 @@ app.put("/career/delete/:id",(req,res) => {
     
 })
 
-app.put("/career/add/:id",(req,res) => {
+app.put("/career/add/:id/:subject",(req,res) => {
     Career.findById(req.params.id).then((career)=>{
         if(career){
-            career.pensum.push(req.body.subject);
+            career.pensum.push(req.params.subject);
               career.save();
-              mensaje="guardado";
+            res.send("guardado");
         }else{
             res.sendStatus(404);
         }
